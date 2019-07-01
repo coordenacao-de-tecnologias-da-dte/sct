@@ -34,7 +34,7 @@
  */
 
 require('../../config.php');
-require('../classes/category.php');
+require('../classes/curso.php');
 require_once($CFG->libdir.'/authlib.php');
 
 
@@ -56,8 +56,7 @@ $PAGE->set_title($sctstring);
 <?php
 if (isloggedin() and !isguestuser()):
     echo $OUTPUT->header();
-    $obj = new Category();
-    $obj->categories();
+    $cursos = new Curso();
     ?>
     <!--<nav class="navbar navbar-dark bg-primary">
         <button class="navbar-toggler" type="button">
@@ -84,9 +83,86 @@ if (isloggedin() and !isguestuser()):
                     </div>
                 </nav>
             </div>
-    <?php
-    include 'page.html';
-    ?>
+            <main id="sct-page" class='col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content'>
+                <h2>Cadastrar tutor(a)</h2>
+                <br>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tipo do Usuário:</label>
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="tipoUsuario" id="inlineRadio1" value="interno" checked
+                                           data-toggle="collapse" data-target=".multiple-collapse" aria-controls="dcpf dloginInst" aria-expanded="false"
+                                    >
+                                    <label class="form-check-label" for="inlineRadio1">Interno</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="tipoUsuario" id="inlineRadio2" value="externo"
+                                           data-toggle="collapse" data-target=".multiple-collapse" aria-controls="dcpf dloginInst" aria-expanded="false">
+                                    <label class="form-check-label" for="inlineRadio2">Externo</label>
+                                </div>
+                                <div id="dloginInst" class="show multiple-collapse form-group">
+                                    <label for="loginInst">Login</label>
+                                    <input type="text" class="form-control" id="loginInst" placeholder="login institucional sem o @uft.edu.br">
+                                </div>
+                                <div id="dcpf" class="collapse multiple-collapse form-group">
+                                    <label for="cpf">CPF</label>
+                                    <input type="text" class="form-control" id="cpf" placeholder="números do cpf sem ponto e traço">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nome">Nome</label>
+                            <input type="text" class="form-control" id="nome" placeholder="Nome">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="sobrenome">Sobrenome</label>
+                            <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control" id="email" placeholder="usuario@dominio.com">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tipo de tutoria:</label>
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="tipoTutoria" id="inlineRadio3" value="presencial" checked
+                                           data-toggle="collapse" data-target=".multiple-collapse2" aria-controls="donline" aria-expanded="false"
+                                    >
+                                    <label class="form-check-label" for="inlineRadio1">Presencial</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="tipoTutoria" id="inlineRadio4" value="online"
+                                           data-toggle="collapse" data-target=".multiple-collapse2" aria-controls="donline" aria-expanded="false">
+                                    <label class="form-check-label" for="inlineRadio2">Online</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div id="dpresencial" class="form-group col-md-6">
+                            <label for="presencial">Curso</label>
+                            <?php
+                            echo $cursos->html_select_courses();
+                            ?>
+                        </div>
+                        <div id="donline" class="show multiple-collapse2 form-group col-md-4">
+                            <label for="online">Polo</label>
+                            <select id="online" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </form>
+            </main>
         </div>
     </div>
 <?php

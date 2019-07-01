@@ -54,12 +54,7 @@ $PAGE->set_title($sctstring);
 
 if (isloggedin() and !isguestuser()) {
     echo $OUTPUT->header();
-    echo "<nav class=\"navbar navbar-dark bg-primary\">
-    <button class=\"navbar-toggler\" type=\"button\" >
-      <span class=\"navbar-toggler-icon\"></span>
-    </button>
-    SCT
-  </nav>
+    echo "
   <div class=\"container-fluid\">
   <div class='row flex-xl-nowrap'>
   <div id=\"sct-menu\" class=\"bd-sidebar bg-secondary col-12 col-md-3 col-xl-2\">
