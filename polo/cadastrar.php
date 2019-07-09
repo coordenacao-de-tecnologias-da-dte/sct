@@ -36,14 +36,14 @@
 require('../../config.php');
 require('../classes/curso.php');
 require('../view/principal.php');
-require('../view/tutor.php');
+require('../view/polo.php');
 require_once($CFG->libdir.'/authlib.php');
 
 
 //HTTPS is required in this page when $CFG->loginhttps enabled
 $PAGE->https_required();
 
-$PAGE->set_url('/sct/tutor/cadastrar.php');
+$PAGE->set_url('/sct/poloDb/cadastrar.php');
 $systemcontext = context_system::instance();
 $PAGE->set_context($systemcontext);
 
@@ -60,16 +60,9 @@ if (isloggedin() and !isguestuser()):
     echo $OUTPUT->header();
     $cursos = new Curso();
     $VIEW_SCT->begin();
-    $VIEW_SCT_TUTOR->begin();
-    echo $cursos->html_select_courses();
+    $VIEW_SCT_POLO->begin();
+    echo $cursos->html_select_multiple_courses();
     ?>
-                        </div>
-                        <div id="donline" class="show multiple-collapse2 form-group col-md-4">
-                            <label for="online">Polo</label>
-                            <select id="online" class="form-control">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                            </select>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Cadastrar</button>

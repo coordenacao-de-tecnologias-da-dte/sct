@@ -34,8 +34,10 @@
  */
 
 require('../config.php');
+//require('./db/conexao.php');
 require('./view/principal.php');
 require_once($CFG->libdir.'/authlib.php');
+//
 
 
 //HTTPS is required in this page when $CFG->loginhttps enabled
@@ -55,10 +57,15 @@ $PAGE->set_title($sctstring);
 $VIEW_SCT = new Layout();
 $VIEW_SCT->setup_diretorio($CFG->wwwroot);
 
+
+
 if (isloggedin() and !isguestuser()) {
     echo $OUTPUT->header();
     $VIEW_SCT->begin();
     echo "OLAAA";
+    //$DB_SCT->create_table_polos();
+    //$DB_SCT->create_table_polos_cursos();
+    //$DB_SCT->create_table_vinculo_sct();
     $VIEW_SCT->end();
     echo $OUTPUT->footer();
 } else {
