@@ -21,18 +21,18 @@ class Tutor
                 <form>
                     <div class=\"form-row\">
                         <div class=\"form-group\">
-                            <label>Tipo do Usuário:</label>
+                            <label>Tipo do Usuário</label>
                             <div class=\"form-group\">
                                 <div class=\"form-check form-check-inline\">
-                                    <input class=\"form-check-input\" type=\"radio\" name=\"tipoUsuario\" id=\"inlineRadio1\" value=\"interno\" checked
-                                           data-toggle=\"collapse\" data-target=\".multiple-collapse\" aria-controls=\"dcpf dloginInst\" aria-expanded=\"false\"
-                                    >
-                                    <label class=\"form-check-label\" for=\"inlineRadio1\">Interno</label>
-                                </div>
-                                <div class=\"form-check form-check-inline\">
-                                    <input class=\"form-check-input\" type=\"radio\" name=\"tipoUsuario\" id=\"inlineRadio2\" value=\"externo\"
-                                           data-toggle=\"collapse\" data-target=\".multiple-collapse\" aria-controls=\"dcpf dloginInst\" aria-expanded=\"false\">
-                                    <label class=\"form-check-label\" for=\"inlineRadio2\">Externo</label>
+                                <div class=\"switch\">
+                                <label for=\"tipoUsuario\" class=\"switch-label switch-label-off\">Interno</label>
+      <input type=\"checkbox\" class=\"switch-input\" name=\"tipoUsuario\" value=\"interno\" id=\"tipoUsuario\" 
+      data-toggle=\"collapse\" data-target=\".multiple-collapse\" aria-controls=\"dcpf dloginInst\" aria-expanded=\"false\">
+      
+      <label for=\"tipoUsuario\" class=\"switch-label switch-label-on\">Externo</label>
+      <span class=\"switch-selection\"></span>
+    </div>
+
                                 </div>
                                 <div id=\"dloginInst\" class=\"show multiple-collapse form-group\">
                                     <label for=\"loginInst\">Login</label>
@@ -61,18 +61,16 @@ class Tutor
                     </div>
                     <div class=\"form-row\">
                         <div class=\"form-group\">
-                            <label>Tipo de tutoria:</label>
+                            <label>Tipo de Tutoria</label>
                             <div class=\"form-group\">
                                 <div class=\"form-check form-check-inline\">
-                                    <input class=\"form-check-input\" type=\"radio\" name=\"tipoTutoria\" id=\"inlineRadio3\" value=\"presencial\" checked
-                                           data-toggle=\"collapse\" data-target=\".multiple-collapse2\" aria-controls=\"donline\" aria-expanded=\"false\"
-                                    >
-                                    <label class=\"form-check-label\" for=\"inlineRadio1\">Presencial</label>
-                                </div>
-                                <div class=\"form-check form-check-inline\">
-                                    <input class=\"form-check-input\" type=\"radio\" name=\"tipoTutoria\" id=\"inlineRadio4\" value=\"online\"
+                                    <div class=\"switch\">
+                                        <label class=\"form-check-label\" for=\"tipoTutoria\">Presencial</label>
+                                        <input class=\"form-check-input\" type=\"checkbox\" name=\"tipoTutoria\" id=\"tipoTutoria\" value=\"presencial\"
                                            data-toggle=\"collapse\" data-target=\".multiple-collapse2\" aria-controls=\"donline\" aria-expanded=\"false\">
-                                    <label class=\"form-check-label\" for=\"inlineRadio2\">Online</label>
+                                        <label class=\"form-check-label\" for=\"tipoTutoria\">Online</label>
+                                        <span class=\"switch-selection\"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
