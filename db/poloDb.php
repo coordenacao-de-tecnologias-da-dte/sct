@@ -63,9 +63,9 @@ class poloDb
                         .$curso;
         $result = $DB_SCT->conn->query($this->sql);
         if($result->num_rows > 0) {
-            return $result->fetch_assoc();
+            return $result;
         } else {
-            echo "não há polos cadastrados";
+            return null;
         }
     }
 

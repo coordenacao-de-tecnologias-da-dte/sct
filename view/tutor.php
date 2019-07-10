@@ -82,6 +82,11 @@ class Tutor
                             <label for=\"presencial\">Curso</label>
         ";
     }
+
+    function script_select_tutor()
+    {
+        echo "<script type='text/javascript' src='../js/select_polos.js'></script>";
+    }
 }
 
 $VIEW_SCT_TUTOR = new Tutor();

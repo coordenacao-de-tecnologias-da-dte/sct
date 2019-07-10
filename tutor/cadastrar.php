@@ -42,6 +42,7 @@ require_once($CFG->libdir.'/authlib.php');
 
 //HTTPS is required in this page when $CFG->loginhttps enabled
 $PAGE->https_required();
+$PAGE->requires->jquery();
 
 $PAGE->set_url('/sct/tutor/cadastrar.php');
 $systemcontext = context_system::instance();
@@ -61,14 +62,14 @@ if (isloggedin() and !isguestuser()):
     $cursos = new Curso();
     $VIEW_SCT->begin();
     $VIEW_SCT_TUTOR->begin();
+    $VIEW_SCT_TUTOR->script_select_tutor();
     echo $cursos->html_select_courses();
     ?>
                         </div>
                         <div id="donline" class="show multiple-collapse2 form-group col-md-4">
                             <label for="online">Polo</label>
                             <select id="online" class="form-control">
-                                <option selected>Choose...</option>
-                                <option>...</option>
+                                <option selected disabled>Escolha um curso primeiro</option>
                             </select>
                         </div>
                     </div>
