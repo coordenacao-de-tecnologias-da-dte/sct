@@ -18,18 +18,21 @@ class Tutor
         echo "
         <h2>Cadastrar tutor(a)</h2>
                 <br>
-                <form>
+                <form action='../tutor/acao_cadastrar.php' method='post'>
+                    <input type='hidden' id='idUser' name='idUser'>
+                    <input type='hidden' id='tipoAuth' name='tipoAuth' value='manual'>
+                    <input type='hidden' id='passUser' name='passUser' value='12345678'>
                     <div class=\"form-row\">
                         <div class=\"form-group\">
-                            <label>Tipo do Usuário</label>
+                            <label>Usuário possui vínculo com a UFT? (Professor ou Técnico)</label>
                             <div class=\"form-group\">
                                 <div class=\"form-check form-check-inline\">
                                 <div class=\"switch\">
-                                <label for=\"tipoUsuario\" class=\"switch-label switch-label-off\">Interno</label>
-      <input type=\"checkbox\" class=\"switch-input\" name=\"tipoUsuario\" value=\"interno\" id=\"tipoUsuario\" 
+                                <label for=\"tipoUsuario\" class=\"switch-label switch-label-off\">Não</label>
+      <input type=\"checkbox\" class=\"switch-input\" name=\"tipoUsuario\" value=\"interno\" id=\"tipoUsuario\" checked
       data-toggle=\"collapse\" data-target=\".multiple-collapse\" aria-controls=\"dcpf dloginInst\" aria-expanded=\"false\">
       
-      <label for=\"tipoUsuario\" class=\"switch-label switch-label-on\">Externo</label>
+      <label for=\"tipoUsuario\" class=\"switch-label switch-label-on\">Sim</label>
       <span class=\"switch-selection\"></span>
     </div>
 
@@ -40,7 +43,7 @@ class Tutor
                                 </div>
                                 <div id=\"dcpf\" class=\"collapse multiple-collapse form-group\">
                                     <label for=\"cpf\">CPF</label>
-                                    <input type=\"text\" class=\"form-control\" id=\"cpf\" placeholder=\"números do cpf sem ponto e traço\">
+                                    <input type=\"text\" class=\"form-control\" id=\"cpf\" placeholder=\"números do cpf sem ponto e traço\" maxlength=\"11\">
                                 </div>
                             </div>
                         </div>
@@ -64,11 +67,12 @@ class Tutor
                             <label>Tipo de Tutoria</label>
                             <div class=\"form-group\">
                                 <div class=\"form-check form-check-inline\">
+                                <input type='hidden' id='tipoTutoria' name='tipoTutoria' value='presencial'>
                                     <div class=\"switch\">
-                                        <label class=\"form-check-label\" for=\"tipoTutoria\">Presencial</label>
-                                        <input class=\"form-check-input\" type=\"checkbox\" name=\"tipoTutoria\" id=\"tipoTutoria\" value=\"presencial\"
+                                        <label class=\"form-check-label\" for=\"checktipoTutoria\">Presencial</label>
+                                        <input class=\"form-check-input\" type=\"checkbox\" name=\"checktipoTutoria\" id=\"checktipoTutoria\"
                                            data-toggle=\"collapse\" data-target=\".multiple-collapse2\" aria-controls=\"donline\" aria-expanded=\"false\">
-                                        <label class=\"form-check-label\" for=\"tipoTutoria\">Online</label>
+                                        <label class=\"form-check-label\" for=\"checktipoTutoria\">Online</label>
                                         <span class=\"switch-selection\"></span>
                                     </div>
                                 </div>
@@ -84,6 +88,11 @@ class Tutor
     function script_select_tutor()
     {
         echo "<script type='text/javascript' src='../js/select_polos.js'></script>";
+    }
+
+    function script_verifica_usuario()
+    {
+        echo "<script type='text/javascript' src='../js/validar_login.js'></script><script type='text/javascript' src='../js/jquery.mask.js'></script>";
     }
 }
 

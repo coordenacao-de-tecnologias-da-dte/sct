@@ -63,12 +63,13 @@ if (isloggedin() and !isguestuser()):
     $VIEW_SCT->begin();
     $VIEW_SCT_TUTOR->begin();
     $VIEW_SCT_TUTOR->script_select_tutor();
+    $VIEW_SCT_TUTOR->script_verifica_usuario();
     echo $cursos->html_select_courses();
     ?>
                         </div>
                         <div id="donline" class="show multiple-collapse2 form-group col-md-4">
                             <label for="online">Polo</label>
-                            <select id="online" class="form-control">
+                            <select id="online" name="online" class="form-control">
                                 <option selected disabled>Escolha um curso primeiro</option>
                             </select>
                         </div>

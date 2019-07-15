@@ -6,7 +6,7 @@
  * Time: 16:52
  */
 
-require('../db/conexao.php');
+require_once('../db/conexao.php');
 
 class poloDb
 {

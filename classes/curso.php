@@ -31,7 +31,7 @@ class Curso
 
     function html_select_courses()
     {
-        $select_courses="<select id=\"presencial\" class=\"form-control\"><option disabled selected>Selecione...</option>";
+        $select_courses="<select id=\"presencial\" name=\"presencial\" class=\"form-control\"><option disabled selected>Selecione...</option>";
         $grupo_graduacao="<optgroup label='Graduação'>";
             foreach ($this->moodle_courses_children_graduacao() as $item){
                 if($item["name"] != "Graduação"){
