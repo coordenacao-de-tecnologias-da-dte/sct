@@ -20,8 +20,9 @@ class Tutor
                 <br>
                 <form action='../tutor/acao_cadastrar.php' method='post'>
                     <input type='hidden' id='idUser' name='idUser'>
-                    <input type='hidden' id='tipoAuth' name='tipoAuth' value='manual'>
-                    <input type='hidden' id='passUser' name='passUser' value='12345678'>
+                    <input type='hidden' id='tipoAuth' name='tipoAuth' value='ldap'>
+                    <input type='hidden' id='verificouDB' name='verificouDB' value='false'>
+                    <input type='hidden' id='passUser' name='passUser' value='changeme'>
                     <div class=\"form-row\">
                         <div class=\"form-group\">
                             <label>Usuário possui vínculo com a UFT? (Professor ou Técnico)</label>
@@ -39,11 +40,11 @@ class Tutor
                                 </div>
                                 <div id=\"dloginInst\" class=\"show multiple-collapse form-group\">
                                     <label for=\"loginInst\">Login</label>
-                                    <input type=\"text\" class=\"form-control\" id=\"loginInst\" placeholder=\"login institucional sem o @uft.edu.br\">
+                                    <input type=\"text\" class=\"form-control\" id=\"loginInst\" name=\"loginInst\" placeholder=\"login institucional sem o @uft.edu.br\">
                                 </div>
                                 <div id=\"dcpf\" class=\"collapse multiple-collapse form-group\">
                                     <label for=\"cpf\">CPF</label>
-                                    <input type=\"text\" class=\"form-control\" id=\"cpf\" placeholder=\"números do cpf sem ponto e traço\" maxlength=\"11\">
+                                    <input type=\"text\" class=\"form-control\" id=\"cpf\" name=\"cpf\" placeholder=\"números do cpf sem ponto e traço\" maxlength=\"11\">
                                 </div>
                             </div>
                         </div>
@@ -51,16 +52,16 @@ class Tutor
                     <div class=\"form-row\">
                         <div class=\"form-group col-md-6\">
                             <label for=\"nome\">Nome</label>
-                            <input type=\"text\" class=\"form-control\" id=\"nome\" placeholder=\"Nome\">
+                            <input type=\"text\" class=\"form-control\" id=\"nome\" name=\"nome\" placeholder=\"Nome\">
                         </div>
                         <div class=\"form-group col-md-6\">
                             <label for=\"sobrenome\">Sobrenome</label>
-                            <input type=\"text\" class=\"form-control\" id=\"sobrenome\" placeholder=\"Sobrenome\">
+                            <input type=\"text\" class=\"form-control\" id=\"sobrenome\" name=\"sobrenome\" placeholder=\"Sobrenome\">
                         </div>
                     </div>
                     <div class=\"form-group\">
                         <label for=\"email\">E-mail</label>
-                        <input type=\"email\" class=\"form-control\" id=\"email\" placeholder=\"usuario@dominio.com\">
+                        <input type=\"email\" class=\"form-control\" id=\"email\" name=\"email\" placeholder=\"usuario@dominio.com\">
                     </div>
                     <div class=\"form-row\">
                         <div class=\"form-group\">

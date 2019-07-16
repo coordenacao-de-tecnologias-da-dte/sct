@@ -21,7 +21,7 @@ class userDb
     {
         global $DB_SCT;
         //inserir atributo ldap depois $this->sql = "SELECT * FROM mdl_user WHERE username = '".$username."' AND auth='ldap'";
-        $this->sql = "SELECT id, auth, firstname, lastname, email FROM mdl_user WHERE username = '".$username."'";
+        $this->sql = "SELECT id, firstname, lastname, email FROM mdl_user WHERE username = '$username'";
         $result = $DB_SCT->conn->query($this->sql);
         if($result->num_rows > 0) {
             return $result->fetch_assoc();
@@ -55,6 +55,22 @@ class userDb
             echo $DB_SCT->conn->error;
             return -1;
         }
+    }
+
+    function inserir_novo_usuario($tipoAuth, $login, $senha, $nome, $sobrenome, $email)
+    {
+        global $DB_SCT;
+        $sql = "INSERT INTO mdl_user (auth, confirmed, mnethostid, username, password, firstname, lastname, email) VALUE ('$tipoAuth', 1, 1,  
+                '$login', '$senha', '$nome', '$sobrenome', '$email')";
+
+        if($DB_SCT->conn->query($sql) === true) {
+            return $DB_SCT->conn->insert_id;
+        }
+        else {
+            echo $DB_SCT->conn->error;
+            return -1;
+        }
+
     }
 }
 

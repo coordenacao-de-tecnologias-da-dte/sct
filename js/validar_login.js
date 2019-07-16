@@ -7,17 +7,19 @@ $(document).ready(function(){
                 url:'ajaxPolo.php',
                 data:'loginInst='+login,
                 success:function(result){
+                    console.log(result);
                     rst = $.parseJSON(result);
                     $('#idUser').val(rst.id);
                     $('#nome').val(rst.firstname);
                     $('#sobrenome').val(rst.lastname);
                     $('#email').val(rst.email);
-                    $('#tipoAuth').val(rst.auth);
                     if(rst.firstname == ''){
                         $('#nome').focus();
+                        $('#verificouDB').val('false');
                     } else {
                         $('#tipoTutoria').focus();
-                        $('#passUser').val('');
+                        $('#passUser').val(null);
+                        $('#verificouDB').val('true');
                     }
                 }
             });
@@ -31,31 +33,39 @@ $(document).ready(function(){
                 url:'ajaxPolo.php',
                 data:'cpf='+login,
                 success:function(result){
+                    console.log(result + login);
                     rst = $.parseJSON(result);
                     $('#idUser').val(rst.id);
                     $('#nome').val(rst.firstname);
                     $('#sobrenome').val(rst.lastname);
                     $('#email').val(rst.email);
-                    $('#tipoAuth').val(rst.auth);
                     if(rst.firstname == ''){
                         $('#nome').focus();
+                        $('#verificouDB').val('false');
                     } else {
                         $('#tipoTutoria').focus();
-                        $('#passUser').val('');
+                        $('#passUser').val(null);
+                        $('#verificouDB').val('true');
                     }
                 }
             });
         }
     });
     //quando alteramos o tipo do usuário
-    $('#tipoUsuario').on('change', function () {
+    $('#tipoUsuario').click(function () {
         $('#idUser').val('');
         $('#nome').val('');
         $('#sobrenome').val('');
         $('#email').val('');
         $('#loginInst').val('');
         $('#cpf').val('');
-    })
+        if($(this).is(":checked")){
+            $('#tipoAuth').val('ldap');
+        }
+        else if($(this).is(":not(:checked)")){
+            $('#tipoAuth').val('manual');
+        }
+    });
 
     $('#cpf').mask('00000000000', {reverse: true});
 
@@ -67,4 +77,6 @@ $(document).ready(function(){
             $('#tipoTutoria').val('presencial');
         }
     });
+
+
 });

@@ -22,7 +22,7 @@ if(!empty($_POST["curso_id"])) {
 if(!empty($_POST["loginInst"])) {
     $resultado = $SCT_DB_USER->usuario_por_username($_POST["loginInst"]);
     if($resultado){
-        echo json_encode(array('id' => $resultado["id"], 'auth' => $resultado["auth"], 'firstname' => $resultado["firstname"], 'lastname' => $resultado["lastname"], 'email' => $resultado["email"]));
+        echo json_encode(array('id' => $resultado["id"], 'firstname' => utf8_encode($resultado["firstname"]), 'lastname' => utf8_encode($resultado["lastname"]), 'email' => $resultado["email"]));
     } else {
         echo json_encode(array('id' => '', 'firstname' => '', 'lastname' => '', 'email' => ''));
     }
@@ -31,22 +31,10 @@ if(!empty($_POST["loginInst"])) {
 if(!empty($_POST["cpf"])) {
     $resultado = $SCT_DB_USER->usuario_por_username($_POST["cpf"]);
     if($resultado){
-        echo json_encode(array('id' => $resultado["id"], 'auth' => $resultado["auth"], 'firstname' => $resultado["firstname"], 'lastname' => $resultado["lastname"], 'email' => $resultado["email"]));
+        echo json_encode(array('id' => $resultado["id"], 'firstname' => utf8_encode($resultado["firstname"]), 'lastname' => utf8_encode($resultado["lastname"]), 'email' => $resultado["email"]));
     } else {
         echo json_encode(array('id' => '', 'firstname' => '', 'lastname' => '', 'email' => ''));
     }
-}
-
-if (empty($_POST["idUser"]) && !empty($_POST["curso_id"])) {
-    /*$idVinculo = $SCT_DB_USER->inserir_vinculo($_POST["idUser"], $_POST["presencial"], $_POST["online"], $_POST["tipoTutoria"]);
-
-    if($idPolo >= 1){
-        var_dump($idPolo);
-        //$SCT_DB_POLO->inserir_cursos_no_polo($idPolo, $_POST["cursos_polo"]);
-    } else {
-        echo "Erro ao tentar salvar o polo";
-    }*/
-    echo "vazio";
 }
 
 
