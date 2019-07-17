@@ -23,6 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if($idVinculo < 1){
                 echo "Erro ao tentar salvar o Vinculo";
+            } else {
+                $host  = $_SERVER['HTTP_HOST'];
+                $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+                $extra = 'cadastrar.php';
+                header("Location: http://$host$uri/$extra");
+                exit;
             }
 
         } else {
@@ -34,6 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if($idVinculo < 1){
             echo "Erro ao tentar salvar o Vinculo";
+        } else {
+            $host  = $_SERVER['HTTP_HOST'];
+            $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+            $extra = 'cadastrar.php';
+            header("Location: http://$host$uri/$extra");
+            exit;
         }
     }
 
