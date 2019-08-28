@@ -33,11 +33,14 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-require('../config.php');
-//require('./db/conexao.php');
+require_once('config.php');
+require_once DBAPI;
 require('./view/principal.php');
+require('./view/tutores.php');
 require_once($CFG->libdir.'/authlib.php');
-//
+
+$db = open_database();
+
 
 
 //HTTPS is required in this page when $CFG->loginhttps enabled
@@ -54,20 +57,38 @@ $sctstring = 'SCT - Sistema de Cadastro de Tutores';
 //$PAGE->navbar->add($strlogin, get_login_url());
 $PAGE->navbar->add($sctstring);
 $PAGE->set_title($sctstring);
-$VIEW_SCT = new Layout();
-$VIEW_SCT->setup_diretorio($CFG->wwwroot);
+/*$VIEW_SCT = new Layout();
+$VIEW_SCT->setup_diretorio($CFG->wwwroot);*/
 
 
 
 if (isloggedin() and !isguestuser()) {
-    echo $OUTPUT->header();
-    $VIEW_SCT->begin();
-    echo "OLAAA";
-    //$DB_SCT->create_table_polos();
-    //$DB_SCT->create_table_polos_cursos();
-    //$DB_SCT->create_table_vinculo_sct();
-    $VIEW_SCT->end();
-    echo $OUTPUT->footer();
+
+    /*if($SCT_DB_USER->verifica_permissao($_SESSION['USER']->id)){
+        echo "epa";
+    } else {
+        echo "nao encontrou permissao";
+    }*/
+    if(!isset($_SESSION['user_sct'])){
+        vinculo_sct($_SESSION['USER']->id);
+    }
+
+        if($_SESSION['user_sct']){
+            echo $OUTPUT->header();
+            include HEADER_TEMPLATE;
+            var_dump($_SESSION['user_sct'][0]);
+            /*$VIEW_SCT->begin();
+            //var_dump($_SESSION['USER']->id);
+            $VIEW_SCT_LISTA_TUTORES->begin();
+
+            $VIEW_SCT_LISTA_TUTORES->end();
+            $VIEW_SCT->end();*/
+            include FOOTER_TEMPLATE;
+            echo $OUTPUT->footer();
+        } else {
+            redirect($CFG->wwwroot.'/index.php', 'Você não possui permissão', 5);
+        }
+
 } else {
 
     redirect($CFG->wwwroot.'/index.php', 'Faça o login', 5);

@@ -5,7 +5,7 @@
  * Date: 04/07/19
  * Time: 10:28
  */
-require('../../config.php');
+require_once('../../config.php');
 
 class ConexaoDb {
 

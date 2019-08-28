@@ -5,7 +5,7 @@
  * Date: 12/07/19
  * Time: 11:51
  */
-include '../db/userDb.php';
+require_once('../db/userDb.php');
 require_once($CFG->libdir.'/moodlelib.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

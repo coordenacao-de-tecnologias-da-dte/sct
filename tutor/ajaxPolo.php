@@ -5,8 +5,8 @@
  * Date: 10/07/19
  * Time: 10:21
  */
-include '../db/poloDb.php';
-include '../db/userDb.php';
+include_once '../db/poloDb.php';
+include_once '../db/userDb.php';
 
 if(!empty($_POST["curso_id"])) {
     $resultado = $SCT_DB_POLO->get_polos_cursos($_POST["curso_id"]);

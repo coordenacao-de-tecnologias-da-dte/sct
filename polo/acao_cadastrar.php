@@ -5,7 +5,7 @@
  * Date: 08/07/19
  * Time: 17:18
  */
-require('../db/poloDb.php');
+require_once('../db/poloDb.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     global $SCT_DB_POLO;

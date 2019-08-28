@@ -30,6 +30,52 @@ class userDb
         }
     }
 
+    function get_all_tutores()
+    {
+        global $DB_SCT;
+        //inserir atributo ldap depois $this->sql = "SELECT * FROM mdl_user WHERE username = '".$username."' AND auth='ldap'";
+        $this->sql = "SELECT CONCAT(u.firstname,' ',u.lastname) as tutor, c.name as curso, p.nome as polo, t.tipoVinculo as tipo 
+                      FROM mdl_vinculo_sct t INNER JOIN mdl_user u ON u.id = t.idUser INNER JOIN mdl_course_categories c ON c.id = t.idCategory 
+                      INNER JOIN mdl_polos p ON p.id = t.idPolo";
+        $result = $DB_SCT->conn->query($this->sql);
+        if($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return null;
+        }
+    }
+
+    function get_all_tutores_curso($curso)
+    {
+        global $DB_SCT;
+        //inserir atributo ldap depois $this->sql = "SELECT * FROM mdl_user WHERE username = '".$username."' AND auth='ldap'";
+        $this->sql = "SELECT CONCAT(u.firstname,' ',u.lastname) as tutor, c.name as curso, p.nome as polo, t.tipoVinculo as tipo 
+                      FROM mdl_vinculo_sct t INNER JOIN mdl_user u ON u.id = t.idUser INNER JOIN mdl_course_categories c ON c.id = t.idCategory 
+                      INNER JOIN mdl_polos p ON p.id = t.idPolo WHERE t.idCategory = $curso";
+        $result = $DB_SCT->conn->query($this->sql);
+        if($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return null;
+        }
+    }
+
+    function verifica_permissao($usuario)
+    {
+        global $DB_SCT;
+        //inserir atributo ldap depois $this->sql = "SELECT * FROM mdl_user WHERE username = '".$username."' AND auth='ldap'";
+        /*$this->sql = "SELECT CONCAT(u.firstname,' ',u.lastname) as tutor, c.name as curso, p.nome as polo, t.tipoVinculo as tipo
+                      FROM mdl_vinculo_sct t INNER JOIN mdl_user u ON u.id = t.idUser INNER JOIN mdl_course_categories c ON c.id = t.idCategory 
+                      INNER JOIN mdl_polos p ON p.id = t.idPolo WHERE t.tipoVinculo = 'admin' OR t.tipoVinculo = 'coord_bolsas' OR t.tipoVinculo = 'coord_curso'
+                      AND t.idUser = $usuario";
+        $result = $DB_SCT->conn->query($this->sql);
+        if($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        } else {
+            return null;
+        }*/
+    }
+
     function vinculo_atual_usuario($idUser)
     {
         global $DB_SCT;
@@ -70,7 +116,6 @@ class userDb
             echo $DB_SCT->conn->error;
             return -1;
         }
-
     }
 }
 
