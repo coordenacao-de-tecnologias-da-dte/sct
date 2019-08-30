@@ -12,7 +12,7 @@
             <ul class="nav bd-sidenav">
             <li><a class="bd-toc-link nav-link" href="<?php echo BASEURL; ?>">Inicio</a></li>
             <li><a class="bd-toc-link nav-link" href="<?php echo BASEURL; ?>polo/cadastrar.php">Cadastrar Polo</a></li>
-            <li><a class="bd-toc-link nav-link" href="<?php echo BASEURL; ?>tutor/cadastrar.php">Cadastrar Tutor(a)</a></li>
+            <li><a class="bd-toc-link nav-link" href="<?php echo BASEURL; ?>tutor/">Tutores</a></li>
             <li><a class="bd-toc-link nav-link" href='#'>Víncular Tutor(a)</a></li>
             </ul>
             </div>

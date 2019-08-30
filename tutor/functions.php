@@ -15,8 +15,8 @@ $tutor = null;
 /*
  * LIsta de TUtores
  * */
-function index(){
+function index($usuario){
     global $tutores;
 
-    $tutores = find_all_tutores('');
+    $tutores = lista_vinculos($usuario);
 }
