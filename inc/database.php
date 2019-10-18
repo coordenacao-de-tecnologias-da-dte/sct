@@ -78,6 +78,7 @@ function lista_vinculos($usuario = null, $id = null)
             $retorno = $resultado->fetch_all(MYSQLI_ASSOC);
         }
     } catch (Exception $e) {
+        echo $e->GetMessage();
         $_SESSION['message'] = $e->GetMessage();
         $_SESSION['type'] = 'danger';
     }
