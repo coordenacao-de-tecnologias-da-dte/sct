@@ -11,7 +11,6 @@ require_once (DBUSER);
 require_once DBTUTOR;
 
 if(!empty($_POST["curso_id"])) {
-    echo "chamou chamou";
     $resultado = get_polos_cursos($_POST["curso_id"]);
     if($resultado) {
         while($view = $resultado->fetch_assoc()){
