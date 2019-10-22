@@ -31,26 +31,21 @@ class Curso
 
     function html_select_courses()
     {
-        $select_courses="<select id=\"presencial\" name=\"presencial\" class=\"form-control\"><option disabled selected>Selecione...</option>";
-        $grupo_graduacao="<optgroup label='Graduação'>";
+        $grupos="<optgroup label='Graduação'>";
             foreach ($this->moodle_courses_children_graduacao() as $item){
                 if($item["name"] != "Graduação"){
-                    $grupo_graduacao.="<option value='".$item["id"]."'>".$item["name"]."</option>";
+                    $grupos.="<option value='".$item["id"]."'>".$item["name"]."</option>";
                 }
             }
-        $grupo_graduacao.="</optgroup>";
-        $select_courses.=$grupo_graduacao;
-        $grupo__pos_graduacao="<optgroup label='Pós-Graduação'>";
+        $grupos.="</optgroup> <optgroup label='Pós-Graduação'>";
         foreach ($this->moodle_courses_children_pos_graduacao() as $item){
             if($item["name"] != "Pós-Graduação"){
-                $grupo__pos_graduacao.="<option value='".$item["id"]."'>".$item["name"]."</option>";
+                $grupos.="<option value='".$item["id"]."'>".$item["name"]."</option>";
             }
         }
-        $grupo__pos_graduacao.="</optgroup>";
-        $select_courses.=$grupo__pos_graduacao;
-        $select_courses.="</select>";
+        $grupos.="</optgroup>";
 
-        return $select_courses;
+        return $grupos;
     }
 
     function html_select_multiple_courses()

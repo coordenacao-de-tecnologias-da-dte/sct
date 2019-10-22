@@ -36,7 +36,7 @@ if (isloggedin() and !isguestuser()):
             <h2>Lista de Tutores</h2>
         </div>
         <div class="col-sm-6 text-right h2">
-            <a class="btn btn-primary" href="./tutor/cadastrar.php"><i class="fa fa-plus"></i> Novo Tutor(a)</a>
+            <a class="btn btn-primary" href="./tutor/add.php"><i class="fa fa-plus"></i> Novo Tutor(a)</a>
             <a class="btn btn-default" href="index.php"><i class="fa fa-refresh"></i> Atualizar</a>
         </div>
     </div>

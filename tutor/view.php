@@ -2,11 +2,10 @@
 
 
 require_once('functions.php');
-view($_GET['id']);	
-index($_SESSION["user_sct"][0]);
+view($_GET['id']);
 echo $OUTPUT->header();
 include (HEADER_TEMPLATE);
-
+var_dump($tutor);
 
 ?>	
     <h2>Cliente : <?php echo $tutor['id']; ?></h2>	
@@ -18,7 +17,7 @@ include (HEADER_TEMPLATE);
         ?>	
 <dl class="dl-horizontal">		
 <dt>Nome Completo:</dt>		
-    <dd><?php echo $tutor['nome']; ?></dd>	
+    <dd><?php echo $tutor['tutor']; ?></dd>
         <dt>Usuário no Sistema:</dt>
                 <dd><?php echo $tutor['username']; ?></dd>	
 </dl>	

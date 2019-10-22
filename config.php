@@ -10,8 +10,14 @@ include_once dirname(dirname(__FILE__)).'/config.php';
 if(!defined('ABSPATH'))
     define('ABSPATH', dirname(__FILE__).'/');
 
-if ( !defined('DBAPI') )
-    define('DBAPI', ABSPATH.'inc/database.php');
+if ( !defined('DBTUTOR') )
+    define('DBTUTOR', ABSPATH.'db/tutorDb.php');
+
+if ( !defined('DBPOLO') )
+    define('DBPOLO', ABSPATH.'db/poloDb.php');
+
+if ( !defined('DBUSER') )
+    define('DBUSER', ABSPATH.'db/userDb.php');
 
 if(!defined('BASEURL')){
     define('BASEURL', $CFG->wwwroot.'/sct/');

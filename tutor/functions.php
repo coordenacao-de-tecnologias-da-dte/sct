@@ -7,13 +7,8 @@
  */
 
 require_once ('../config.php');
-require_once (DBAPI);
-/*require_once('../../config.php');
-require('../classes/curso.php');
-require('../view/principal.php');
-require('../view/tutor.php');
-require_once($CFG->libdir.'/authlib.php');*/
-
+require_once (DBTUTOR);
+require_once (DBUSER);
 
 $tutores = null;
 $tutor = null;
@@ -30,13 +25,19 @@ function index($usuario){
 function add(){
     if (!empty($_POST['tutor'])) {
         $tutor = $_POST['tutor'];
+        var_dump($tutor);
+        exit();
         //save('customers', $customer);
-        header('location: index.php');
+        //header('location: index.php');
     }
 }
 function view($id = null) {	 
      global $tutor;	 
-     $tutor = lista_vinculos(null, $id);	
+     $retorno = lista_vinculos(null, $id);
+     if($retorno){
+         $tutor = $retorno[0];
+     }
+
     }
 
 /*function cadastrar(){

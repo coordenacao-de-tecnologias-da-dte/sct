@@ -7,8 +7,8 @@ $(document).ready(function(){
                 url:'ajaxPolo.php',
                 data:'loginInst='+login,
                 success:function(result){
-                    console.log(result);
                     rst = $.parseJSON(result);
+                    if(rst){
                     $('#idUser').val(rst.id);
                     $('#nome').val(rst.firstname);
                     $('#sobrenome').val(rst.lastname);
@@ -20,6 +20,9 @@ $(document).ready(function(){
                         $('#tipoTutoria').focus();
                         $('#passUser').val(null);
                         $('#verificouDB').val('true');
+                    }
+                    }else {
+                        alert("USUÁRIO JÁ CADASTRADO.");
                     }
                 }
             });
@@ -35,6 +38,7 @@ $(document).ready(function(){
                 success:function(result){
                     console.log(result + login);
                     rst = $.parseJSON(result);
+                    if(rst){
                     $('#idUser').val(rst.id);
                     $('#nome').val(rst.firstname);
                     $('#sobrenome').val(rst.lastname);
@@ -46,6 +50,9 @@ $(document).ready(function(){
                         $('#tipoTutoria').focus();
                         $('#passUser').val(null);
                         $('#verificouDB').val('true');
+                    }
+                    }else {
+                        alert("USUÁRIO JÁ CADASTRADO.");
                     }
                 }
             });

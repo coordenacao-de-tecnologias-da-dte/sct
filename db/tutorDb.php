@@ -5,29 +5,9 @@
  * Date: 26/07/19
  * Time: 11:33
  */
-
+require_once('connection.php');
 mysqli_report(MYSQLI_REPORT_STRICT);
 
-function open_database()
-{
-    global $CFG;
-    try {
-        $conn = new mysqli($CFG->dbhost, $CFG->dbuser, $CFG->dbpass, $CFG->dbname);
-        return $conn;
-    } catch (Exception $e) {
-        echo $e->getMessage();
-        return null;
-    }
-}
-
-function close_database($conn)
-{
-    try {
-        mysqli_close($conn);
-    } catch (Exception $e) {
-        echo $e->getMessage();
-    }
-}
 /* Método para verificar qual o tipo de acesso do usuário, ou se ele realmente pode acessar a aplicação*/
 function vinculo_sct($idUser)
 {
@@ -65,26 +45,54 @@ function lista_vinculos($usuario = null, $id = null)
             FROM mdl_vinculo_sct v INNER JOIN mdl_user u ON u.id = v.idUser INNER JOIN mdl_course_categories c ON c.id = v.idCategory
             INNER JOIN mdl_polos p ON p.id = v.idPolo WHERE v.dtIni IS NOT NULL AND v.dtFim IS NULL 
             AND (v.tipoVinculo = 'online' OR v.tipoVinculo = 'presencial')";
+
         if($id){
             $sql = $sql." AND v.id=".$id;
         }
-        if($usuario->tipoVinculo = "coord_curso"){
+        if($usuario->tipoVinculo == "coord_curso"){
             $sql = $sql." AND idCategory = ". $usuario->idCategory;
         }
-
         $resultado = $db->query($sql);
-
         if($resultado->num_rows > 0){
             $retorno = $resultado->fetch_all(MYSQLI_ASSOC);
         }
     } catch (Exception $e) {
-        echo $e->GetMessage();
         $_SESSION['message'] = $e->GetMessage();
         $_SESSION['type'] = 'danger';
     }
 
     close_database($db);
     return $retorno;
+}
+
+function inserir_vinculo($idUser, $idCategory, $idPolo, $tipoVinculo)
+{
+    $db = open_database();
+    $sql = "INSERT INTO mdl_vinculo_sct (idUser, idCategory, idPolo, tipoVinculo, dtIni) VALUE (".$idUser.",".$idCategory.",".$idPolo
+        .",'".$tipoVinculo."',CURDATE())";
+    if($db->query($sql) === true) {
+        return $db->insert_id;
+    }
+    else {
+        echo $db->error;
+        return -1;
+    }
+    close_database($db);
+}
+
+function vinculo_atual_usuario($idUser)
+{
+    $db = open_database();
+    //inserir atributo ldap depois $this->sql = "SELECT * FROM mdl_user WHERE username = '".$username."' AND auth='ldap'";
+    $sql = "SELECT * FROM mdl_vinculo_sct WHERE idUser = '".$idUser."' AND dtIni IS NOT NULL AND dtFim IS NULL";
+    $result = $db->query($sql);
+    if($result->num_rows > 0) {
+        return $result->fetch_assoc();
+    } else {
+        return null;
+    }
+
+    close_database($db);
 }
 
 
