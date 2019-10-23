@@ -69,10 +69,10 @@ if (isloggedin() and !isguestuser()):
         <td><?php echo utf8_encode($tutor['tipo']); ?></td>
         <td class="actions text-right">
             <a href="./tutor/view.php?id=<?php echo $tutor['id']; ?>" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
-            <a href="edit.php?id=<?php echo $tutor['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
-            <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal" data-customer="<?php echo $tutor['id']; ?>">
+            <a href="./tutor/edit.php?id=<?php echo $tutor['id']; ?>" class="btn btn-sm btn-warning"><i class="fa fa-pencil"></i></a>
+            <!--<a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-modal" data-customer="<?php //echo $tutor['id']; ?>">
                 <i class="fa fa-trash"></i>
-            </a>
+            </a>-->
         </td>
     </tr>
         <?php endforeach; ?>

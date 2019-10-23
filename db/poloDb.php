@@ -42,7 +42,7 @@ function get_all_polos()
     $sql = "SELECT * FROM mdl_polos";
     $result = $db->query($sql);
     if($result->num_rows > 0) {
-        return $result->fetch_assoc();
+        return $result->fetch_all(MYSQLI_ASSOC);
     } else {
         echo "não há polos cadastrados";
     }
