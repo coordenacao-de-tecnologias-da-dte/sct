@@ -61,11 +61,12 @@ function add(){
     }
 }
 
-function view($id = null) {	 
-     global $tutor;	 
-     $retorno = lista_vinculos(null, $id);
-     if($retorno){
-         $tutor = $retorno[0];
-     }
-
+function view($id = null) {
+    global $tutor;
+    global $disciplinas;
+    $retorno = lista_vinculos(null, $id);
+    $tutor = $retorno[0];
+    if ($tutor){
+        $disciplinas = lista_disciplina_vinculadas(null, $tutor["idUser"]);
     }
+}

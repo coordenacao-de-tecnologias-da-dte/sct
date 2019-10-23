@@ -63,7 +63,7 @@ if (isloggedin() and !isguestuser()):
     <?php if($tutores) :?>
     <?php foreach ($tutores as $tutor) : ?>
     <tr>
-        <td><?php echo utf8_encode($tutor['tutor']); ?></td>
+        <td><?php echo utf8_encode($tutor['nome']); ?></td>
         <td><?php echo utf8_encode($tutor['curso']); ?></td>
         <td><?php echo utf8_encode($tutor['polo']); ?></td>
         <td><?php echo utf8_encode($tutor['tipo']); ?></td>
