@@ -8,10 +8,11 @@
 
 require_once('connection.php');
 
-function inserir_polo($nome){
+function inserir_polo($polo){
     $db = open_database();
-    $sql = "INSERT INTO mdl_polos (nome) VALUE ('".$nome."')";
+    $sql = "INSERT INTO mdl_polos (nome) VALUE ('".$polo['nome']."')";
     if($db->query($sql) === true) {
+        inserir_cursos_no_polo($db->insert_id, $polo['cursos']);
         return $db->insert_id;
     }
     else {

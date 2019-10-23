@@ -8,14 +8,17 @@
 
 require_once('functions.php');
 require_once('../classes/curso.php');
+//declaro necessidade do JQuery
 $PAGE->requires->jquery();
+//chamo a função add pra verificar se o formulário foi submetido
 add();
+//declaro instancia de Cursos para poder mostrar o select html de cursos
 $cursos = new Curso();
+//declaro o cabeçalho da página
+echo $OUTPUT->header();
+include(HEADER_TEMPLATE);
 
 ?>
-<?php
-echo $OUTPUT->header();
-include(HEADER_TEMPLATE); ?>
     <!--SCRIPTS PARA VALIDAR USUÁRIO ANTES DE CADASTRAR-->
     <script type='text/javascript' src='../js/select_polos.js'></script>
     <script type='text/javascript' src='../js/validar_login.js'></script>
@@ -101,6 +104,7 @@ include(HEADER_TEMPLATE); ?>
         </div>
     </div>
     <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <a href="../index.php" class="btn btn-default">Voltar</a>
 </form>
 <?php
 include(FOOTER_TEMPLATE);

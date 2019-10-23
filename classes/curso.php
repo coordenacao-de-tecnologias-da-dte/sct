@@ -48,30 +48,6 @@ class Curso
         return $grupos;
     }
 
-    function html_select_multiple_courses()
-    {
-        $select_courses="<select id=\"cursos_polo\" name='cursos_polo[]' class=\"form-control mdb-select\" multiple required>";
-        $grupo_graduacao="<optgroup label='Graduação'>";
-        foreach ($this->moodle_courses_children_graduacao() as $item){
-            if($item["name"] != "Graduação"){
-                $grupo_graduacao.="<option value='".$item["id"]."'>".$item["name"]."</option>";
-            }
-        }
-        $grupo_graduacao.="</optgroup>";
-        $select_courses.=$grupo_graduacao;
-        $grupo__pos_graduacao="<optgroup label='Pós-Graduação'>";
-        foreach ($this->moodle_courses_children_pos_graduacao() as $item){
-            if($item["name"] != "Pós-Graduação"){
-                $grupo__pos_graduacao.="<option value='".$item["id"]."'>".$item["name"]."</option>";
-            }
-        }
-        $grupo__pos_graduacao.="</optgroup>";
-        $select_courses.=$grupo__pos_graduacao;
-        $select_courses.="</select>";
-
-        return $select_courses;
-    }
-
     function html_select_polos($array_polos)
     {
         $select_polos="<select id=\"polos\" class=\"form-control\"><option disabled selected>Selecione...</option>";
