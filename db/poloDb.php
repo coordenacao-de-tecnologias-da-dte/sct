@@ -10,7 +10,7 @@ require_once('connection.php');
 
 function inserir_polo($polo){
     $db = open_database();
-    $sql = "INSERT INTO mdl_polos (nome) VALUE ('".$polo['nome']."')";
+    $sql = "INSERT INTO mdl_polos (nome, dtIni) VALUE ('".$polo['nome']."', CURDATE())";
     if($db->query($sql) === true) {
         inserir_cursos_no_polo($db->insert_id, $polo['cursos']);
         return $db->insert_id;
@@ -25,7 +25,7 @@ function inserir_cursos_no_polo($polo, $array_cursos) {
     $db = open_database();
     $sql = "";
     foreach ($array_cursos as $curso){
-        $sql .= "INSERT INTO mdl_polos_cursos (idPolo, idCategory) VALUES (".$polo.",".$curso.");";
+        $sql .= "INSERT INTO mdl_polos_cursos (idPolo, idCategory, dtIni) VALUES (".$polo.",".$curso.", CURDATE());";
     }
     //echo $this->sql;
     if($db->multi_query($sql) === TRUE) {
