@@ -26,7 +26,7 @@ include(HEADER_TEMPLATE);
 
 <h2>Editar Perfil</h2>
 <br>
-<form action='add.php' method='post'>
+    <form action="edit.php?id=<?php echo $tutor['idUser']; ?>" method="post">
     <input type='hidden' id='idUser' name="tutor[idUser]" value='<?php echo $tutor["idUser"]; ?>'>
     <input type='hidden' id='tipoAuth' name="tutor[tipoAuth]" value='<?php echo $tutor["auth"]; ?>'>
     <input type='hidden' id='verificouDB' name="tutor[verificouDB]" value='false'>
