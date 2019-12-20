@@ -37,10 +37,13 @@ function inserir_cursos_no_polo($polo, $array_cursos) {
     close_database($db);
 }
 
-function get_all_polos()
+function get_all_polos($id=null)
 {
     $db = open_database();
     $sql = "SELECT * FROM mdl_polos";
+    if($id){
+        $sql = $sql." WHERE id=".$id;
+    }
     $result = $db->query($sql);
     if($result->num_rows > 0) {
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -60,6 +63,41 @@ function get_polos_cursos($curso)
         return $result;
     } else {
         return null;
+    }
+    close_database($db);
+}
+
+function cursos_polo($polo){
+    $db = open_database();
+    $sql = "SELECT pc.idCategory, ct.name as nome, pc.dtFim FROM mdl_polos_cursos as pc LEFT JOIN mdl_course_categories as ct ON pc.idCategory = ct.id WHERE pc.idPolo = "
+        .$polo;
+    $result = $db->query($sql);
+    if($result->num_rows > 0) {
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        return null;
+    }
+    close_database($db);
+}
+
+function update_cursos_polo($polo, $array_cursos){
+    $db = open_database();
+    $sql = "";
+    var_dump($array_cursos);
+    foreach ($array_cursos as $curso){
+        if($curso["dtFim"]){
+            $sql .= "UPDATE mdl_polos_cursos SET dtFim = '".$curso["dtFim"]."' WHERE idPolo = ".$polo." AND idCategory = ".$curso["idCategory"].";";
+        }else{
+            $sql .= "UPDATE mdl_polos_cursos SET dtFim = null WHERE idPolo = ".$polo." AND idCategory = ".$curso["idCategory"].";";
+        }
+
+    }
+    //echo $this->sql;
+    if($db->multi_query($sql) === TRUE) {
+        echo "update cursos nos polos";
+        header('Location: '. $_SERVER['HTTP_REFERER']);
+    } else {
+        echo "erro ao tentar update cursos nos polos: ".$sql."<br>".$db->error;
     }
     close_database($db);
 }
