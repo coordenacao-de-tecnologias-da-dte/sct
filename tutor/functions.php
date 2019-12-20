@@ -70,3 +70,25 @@ function view($id = null) {
         $disciplinas = lista_disciplina_vinculadas(null, $tutor["idUser"]);
     }
 }
+
+
+function edit() {
+
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        if (isset($_POST['tutor'])) {
+            $tutor = $_POST['tutor'];
+
+            update($id, $tutor);
+            header('location: ../index.php');
+
+        } else {
+
+            global $tutor;
+            $retorno = perfil_usuario(null, $id);
+            $tutor = $retorno[0];
+        } 
+    } else {
+        header('location: ../index.php');
+    }
+}

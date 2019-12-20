@@ -38,3 +38,21 @@ function inserir_novo_usuario($tipoAuth, $login, $senha, $nome, $sobrenome, $ema
     }
     close_database($db);
 }
+
+function update($id = null, $usuario = null)
+{
+    $db = open_database();
+
+    try {
+        $sql = "UPDATE mdl_user SET firstname = '". utf8_decode($usuario[nome])."', lastname = '". utf8_decode($usuario[sobrenome])."' ,
+email = '". utf8_decode($usuario[email])."' WHERE id = ".$id ;
+
+        echo $sql;
+        $db->query($sql);
+    } catch (Exception $e) {
+        $_SESSION['message'] = $e->GetMessage();
+        $_SESSION['type'] = 'danger';
+    }
+
+    close_database($db);
+}
