@@ -32,11 +32,13 @@ function edit(){
         $id = $_GET['id'];
         if (isset($_POST['polo'])) {
             $cursos = json_decode($_POST['polo']['cursos'], true);
-            //echo $cursos;
-            update_cursos_polo($id, $cursos);
-            exit;
-            /*update($id, $polo);
-            header('location: index.php');*/
+            $polo = $_POST['polo'];
+            $polo_foi_desativado = $_POST['polo']['cursos'];
+            if(!$polo_foi_desativado){
+                update_cursos_polo($id, $cursos);
+            }
+            update_polo($id, $polo);
+            header('location: index.php');
         } else {
             $tmp = get_all_polos($id);
             if($tmp){

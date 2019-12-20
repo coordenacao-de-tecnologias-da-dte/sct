@@ -19,7 +19,7 @@ include(HEADER_TEMPLATE);
 <h2>Editando Polo</h2>
 <br>
 <form action='edit.php?id=<?php echo $polo['id']; ?>' method='post'>
-    <input type="hidden" name="polo[dtFim]" value="<?php echo $polo['dtFim']; ?>"/>
+    <input id="dtFim" type="hidden" name="polo[dtFim]" value="<?php echo $polo['dtFim']; ?>"/>
     <input id="lista_cursos" type="hidden" name="polo[cursos]" value='null'/>
     <div class="form-row">
         <div class="form-group col-md-6">
@@ -44,19 +44,10 @@ include(HEADER_TEMPLATE);
                     <?php foreach ($cursos_polo as $curso) : ?>
                         <tr>
                             <td><?php echo utf8_encode($curso['nome']); ?></td>
-                            <?php if($curso['dtFim']): ?>
                             <td class="actions text-right">
-                                <!--<button id="ativa_polo" type="button" class="btn btn-sm btn-success" value="<?php //echo $curso['idCategory']?>"><i class="fa fa-unlock"></i></button>-->
-                                <input type="checkbox" class="switch-input switch-curso" data-size="xs" data-toggle="toggle" value="<?php echo $curso['idCategory']?>"
+                                <input type="checkbox" <?php if(!$curso['dtFim']){ echo  "checked"; } ?> class="switch-input switch-curso" data-size="xs" data-toggle="toggle" value="<?php echo $curso['idCategory']?>"
                                        data-on="<i class='fa fa-unlock'></i> Ativo" data-off="<i class='fa fa-lock'></i> Inativo" data-onstyle="success" data-offstyle="danger"/>
                             </td>
-                            <?php else: ?>
-                            <td class="actions text-right">
-                                <!--<button id="desativa_polo" type="button" class="btn btn-sm btn-danger" value="<?php //echo $curso['idCategory']?>"><i class="fa fa-lock"></i></button>-->
-                                <input type="checkbox" checked class="switch-input switch-curso" data-size="xs" data-toggle="toggle" value="<?php echo $curso['idCategory']?>"
-                                       data-on="<i class='fa fa-unlock'></i> Ativo" data-off="<i class='fa fa-lock'></i> Inativo" data-onstyle="success" data-offstyle="danger"/>
-                            </td>
-                            <?php endif; ?>
                         </tr>
                     <?php endforeach; ?>
                 <?php else : ?>
@@ -70,13 +61,8 @@ include(HEADER_TEMPLATE);
     </div>
     <div class="form-row">
         <div class="form-group">
-            <?php if($polo['dtFim']): ?>
-                <input type="checkbox" class="switch-input switch-polo" data-size="xs" data-toggle="toggle"
+                <input type="checkbox" <?php if(!$polo['dtFim']){ echo  "checked"; } ?> class="switch-input switch-polo" data-size="xs" data-toggle="toggle"
                        data-on="<i class='fa fa-unlock'></i> Polo Ativo" data-off="<i class='fa fa-lock'></i> Polo Inativo" data-onstyle="success" data-offstyle="danger"/>
-            <?php else: ?>
-                <input type="checkbox" checked class="switch-input switch-polo" data-size="xs" data-toggle="toggle"
-                       data-on="<i class='fa fa-unlock'></i> Polo Ativo" data-off="<i class='fa fa-lock'></i> Polo Inativo" data-onstyle="success" data-offstyle="danger"/>
-            <?php endif; ?>
         </div>
     </div>
     <div class="form-row">

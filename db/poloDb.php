@@ -102,4 +102,22 @@ function update_cursos_polo($polo, $array_cursos){
     close_database($db);
 }
 
+function update_polo($id, $polo){
+    $db = open_database();
+    if($polo["dtFim"]){
+        $sql = "UPDATE mdl_polos SET nome = '".$polo["nome"]."', dtFim = '".$polo["dtFim"]."' WHERE id=".$id;
+    }else{
+        $sql = "UPDATE mdl_polos SET nome = '".$polo["nome"]."', dtFim=null WHERE id=".$id;
+    }
+    $result = $db->query($sql);
+    if($result->num_rows > 0) {
+        return $result->fetch_all(MYSQLI_ASSOC);
+        header('Location: '. $_SERVER['HTTP_REFERER']);
+    } else {
+        return null;
+        echo "erro ao atualizar POlo";
+    }
+    close_database($db);
+}
+
 

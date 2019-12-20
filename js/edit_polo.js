@@ -64,4 +64,13 @@ $(document).ready(function(){
         document.getElementById("lista_cursos").value = json;
         console.log(json);
     });
+
+    $(".switch-polo").on('change', function () {
+        if($(this).is(":checked")){
+            document.getElementById("dtFim").value = null;
+        }else {
+            var date = formatDate(new Date());
+            document.getElementById("dtFim").value = date;
+        }
+    });
 });
