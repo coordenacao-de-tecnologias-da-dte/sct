@@ -120,4 +120,17 @@ function update_polo($id, $polo){
     close_database($db);
 }
 
+function get_polo($id){
+    $db = open_database();
+    $sql = "SELECT * FROM mdl_polos WHERE id=".$id;
+    $result = $db->query($sql);
+    if($result->num_rows > 0) {
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        return null;
+        echo "erro ao atualizar POlo";
+    }
+    close_database($db);
+}
+
 

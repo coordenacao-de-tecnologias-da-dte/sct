@@ -50,6 +50,16 @@ function edit(){
     }
 }
 
+function view($id){
+    global $polo;
+    global $cursos_polo;
+    $retorno = get_polo($id);
+    $polo = $retorno[0];
+    if ($polo){
+        $cursos_polo = cursos_polo($polo["id"]);
+    }
+}
+
 function adapta_array($arr){
     if (is_array($arr)) {
         foreach ($arr as $k => $v) {
