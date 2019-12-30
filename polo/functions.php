@@ -33,10 +33,7 @@ function edit(){
         if (isset($_POST['polo'])) {
             $cursos = json_decode($_POST['polo']['cursos'], true);
             $polo = $_POST['polo'];
-            $polo_foi_desativado = $_POST['polo']['cursos'];
-            if(!$polo_foi_desativado){
-                update_cursos_polo($id, $cursos);
-            }
+            update_cursos_polo($id, $cursos);
             update_polo($id, $polo);
             header('location: index.php');
         } else {
