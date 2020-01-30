@@ -29,23 +29,27 @@ include(HEADER_TEMPLATE);
             <div class="col-sm">
                 <center><h3>Tutor</h3></center>
                 <input class="form-control" id="myInput" type="text" placeholder="Search..">
-                <br>
-                <ul class="list-group" id="myList" >
-                    <li class="list-group-item">First item
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-                            <label class="custom-control-label" for="customCheck"></label>
-                        </div>
-                    </li>
-                    <li class="list-group-item">Second item</li>
-                    <li class="list-group-item">Third item</li>
-                    <li class="list-group-item">Fourth</li>
-                    <li class="list-group-item">Third item</li>
-                    <li class="list-group-item">Fourth</li>
-                    <li class="list-group-item">Third item</li>
-                    <li class="list-group-item">Fourth</li>
-
-                </ul>
+                <table class="table table-striped">
+                    <tbody>
+                    <?php if($tutores) :?>
+                    <?php foreach ($tutores as $tutor) : ?>
+                    <tr>
+                        <th scope="row">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" value=""  name="tutor[]">
+                                <label class="custom-control-label" for="customCheck"></label>
+                            </div>
+                        </th>
+                        <td>Mark</td>
+                    </tr>
+                        <?php endforeach; ?>
+                        <?php else : ?>
+                            <tr>
+                                <td colspan="6">Nenhum registro encontrado.</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
                 <!--<<table border=3 style="margin-left: 20px;">
                     <tr>
                         <td width="165px" height="270px">
@@ -66,6 +70,7 @@ include(HEADER_TEMPLATE);
                         </td>
                     </tr>
                 </table>-->
+
             </div>
 
             <div class="col-sm">
