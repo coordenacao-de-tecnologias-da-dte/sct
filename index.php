@@ -10,6 +10,7 @@ require_once($CFG->libdir.'/authlib.php');
 require_once('./tutor/functions.php');
 //HTTPS is required in this page when $CFG->loginhttps enabled
 $PAGE->https_required();
+//$PAGE->requires->jquery();
 $PAGE->set_url('/sct/index.php');
 $systemcontext = context_system::instance();
 $PAGE->set_context($systemcontext);

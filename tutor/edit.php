@@ -15,6 +15,14 @@ edit();
 //declaro instancia de Cursos para poder mostrar o select html de cursos
 $cursos = new Curso();
 //declaro o cabeçalho da página
+$PAGE->https_required();
+$PAGE->set_url('/sct/tutor/edit.php');
+$systemcontext = context_system::instance();
+$PAGE->set_context($systemcontext);
+// setup text strings
+$sctstring = 'SCT - Sistema de Cadastro de Tutores';
+$PAGE->navbar->add($sctstring);
+$PAGE->set_title($sctstring);
 echo $OUTPUT->header();
 include(HEADER_TEMPLATE);
 
