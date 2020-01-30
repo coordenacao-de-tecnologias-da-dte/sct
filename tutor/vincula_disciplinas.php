@@ -20,27 +20,30 @@ $PAGE->set_context($systemcontext);
 $sctstring = 'SCT - Sistema de Cadastro de Tutores';
 $PAGE->navbar->add($sctstring);
 $PAGE->set_title($sctstring);
+
+if($_SESSION['user_sct']) :
+    index($_SESSION["user_sct"][0]);
 echo $OUTPUT->header();
 include(HEADER_TEMPLATE);
 ?>
     <script type="text/javascript" src="../js/filter_vincularTutor.js"></script>
-    <div class="container">
+    <div class="container overflow-auto" style="max-height: 40%">
         <div class="row">
             <div class="col-sm">
                 <center><h3>Tutor</h3></center>
-                <input class="form-control" id="myInput" type="text" placeholder="Search..">
-                <table class="table table-striped">
+                <input class="form-control" id="sc_tutor" type="text" placeholder="Pesquisar..">
+                <table id="tutorList" class="table table-striped">
                     <tbody>
                     <?php if($tutores) :?>
                     <?php foreach ($tutores as $tutor) : ?>
                     <tr>
                         <th scope="row">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" value=""  name="tutor[]">
-                                <label class="custom-control-label" for="customCheck"></label>
+                                <input type="checkbox" class="custom-control-input" id="check<?php echo $tutor['id'];?>"  value="<?php echo $tutor['id'];?>" name="tutor[]">
+                                <label class="custom-control-label" for="check<?php echo $tutor['id'];?>"></label>
                             </div>
                         </th>
-                        <td>Mark</td>
+                        <td><?php echo $tutor['nome']; ?></td>
                     </tr>
                         <?php endforeach; ?>
                         <?php else : ?>
@@ -99,7 +102,7 @@ include(HEADER_TEMPLATE);
     </div>
     <br>
     <div>
-    <h3>Prévia das vinculaçõens</h3>
+    <h3>Prévia das vinculações</h3>
         <table border=3>
             <tr>
                 <td width="440px" height="180px">
@@ -116,6 +119,7 @@ include(HEADER_TEMPLATE);
 
 
 <?php
+endif;
 include(FOOTER_TEMPLATE);
 echo $OUTPUT->footer();
 ?>

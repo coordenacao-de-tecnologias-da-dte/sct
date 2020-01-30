@@ -22,6 +22,12 @@ function index($usuario){
     $tutores = lista_vinculos($usuario);
 }
 
+function vincula_tutor_disciplinas($usuario){
+    global $tutores;
+
+    $tutores = lista_vinculos($usuario);
+}
+
 function add(){
     //global $tutor;
     if (!empty($_POST['tutor'])) {

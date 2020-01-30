@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: wellyngton
- * Date: 10/01/20 l
+ * Date: 10/01/20
  * Time: 17:32
  */
 require_once ('../config.php');
