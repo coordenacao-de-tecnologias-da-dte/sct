@@ -9,6 +9,8 @@ require_once ('functions.php');
 edit();
 //declaro necessidade do JQuery
 $PAGE->requires->jquery();
+$PAGE->requires->jquery_plugin('bootstrap');
+$PAGE->requires->jquery_plugin('bootstrap-css');
 echo $OUTPUT->header();
 include(HEADER_TEMPLATE);
 ?>
@@ -32,7 +34,7 @@ include(HEADER_TEMPLATE);
     <div class="form-row">
 
         <div class="form-group">
-            <table class="table table-hover">
+           <table class="table table-hover">
                 <thead>
                 <tr>
                     <th width="70%">Nome do curso</th>
@@ -57,8 +59,32 @@ include(HEADER_TEMPLATE);
                 <?php endif; ?>
                 </tbody>
             </table>
+            <!-- Botão que dispara o modal -->
+            <button id="btn-add-curso" type="button" class="btn btn-primary" data-toggle="modal" data-href="fetch_curso_polo.php?polo=<?php echo $polo['id']; ?>" data-target="#addCursoModal"><i class='fa fa-plus'></i> Add Curso(s)</button>
+            <!-- Modal -->
+
+            <div id="addCursoModal" class="modal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Adicionar curso(s) ao Polo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <h5>Situação do Polo</h5>
     <div class="form-row">
         <div class="form-group">
                 <input type="checkbox" <?php if(!$polo['dtFim']){ echo  "checked"; } ?> class="switch-input switch-polo" data-size="xs" data-toggle="toggle"
@@ -71,3 +97,4 @@ include(HEADER_TEMPLATE);
     </div>
 
 </form>
+<?php echo $OUTPUT->footer(); ?>

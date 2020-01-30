@@ -80,6 +80,19 @@ function cursos_polo($polo){
     close_database($db);
 }
 
+function cursos_nao_vinculados_no_polo($polo){
+    $db = open_database();
+    $sql = "SELECT ct.id, ct.name as nome FROM mdl_course_categories as ct WHERE NOT EXISTS (SELECT * FROM mdl_polos_cursos as pc WHERE pc.idPolo = ".$polo.
+        " AND pc.idCategory = ct.id) AND ct.parent in (2,3)"; // aqui estou selecionando apenas as categorias dentro de graduação e pós-graduação
+    $result = $db->query($sql);
+    if($result->num_rows > 0) {
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } else {
+        return null;
+    }
+    close_database($db);
+}
+
 function update_cursos_polo($polo, $array_cursos){
     $db = open_database();
     $sql = "";
