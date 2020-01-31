@@ -25,7 +25,7 @@ if($_SESSION['user_sct']) :
     vincula_tutor_disciplinas($_SESSION["user_sct"][0]);
 echo $OUTPUT->header();
 include(HEADER_TEMPLATE);
-var_dump($_SESSION['user_sct']);
+//var_dump($_SESSION['user_sct']);
 ?>
     <style type="text/css">
         .tblMin tbody{
@@ -73,8 +73,8 @@ var_dump($_SESSION['user_sct']);
                             <tr>
                                 <th scope="row">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="check<?php echo $tutor['id'];?>"  value="<?php echo $tutor['id'];?>" name="tutor[]">
-                                        <label class="custom-control-label" for="check<?php echo $tutor['id'];?>"></label>
+                                        <input type="checkbox" class="custom-control-input" id="checkPolo<?php echo $tutor['id'];?>"  value="<?php echo $tutor['id'];?>" name="tutor[]">
+                                        <label class="custom-control-label" for="checkPolo<?php echo $tutor['id'];?>"></label>
                                     </div>
                                 </th>
                                 <td><?php echo utf8_encode($tutor['polo']); ?></td>
@@ -98,8 +98,8 @@ var_dump($_SESSION['user_sct']);
                             <tr>
                                 <th scope="row">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="check<?php echo $tutor['id'];?>"  value="<?php echo $tutor['id'];?>" name="tutor[]">
-                                        <label class="custom-control-label" for="check<?php echo $tutor['id'];?>"></label>
+                                        <input type="checkbox" class="custom-control-input" id="checkDisciplina<?php echo $tutor['id'];?>"  value="<?php echo $tutor['id'];?>" name="tutor[]">
+                                        <label class="custom-control-label" for="checkDisciplina<?php echo $tutor['id'];?>"></label>
                                     </div>
                                 </th>
                                 <td><?php echo utf8_encode($tutor['disciplina']); ?></td>
