@@ -31,6 +31,7 @@ if (isloggedin() and !isguestuser()):
     echo $OUTPUT->header();
     include (HEADER_TEMPLATE);
 ?>
+        <script type="text/javascript" src="js/filter_list.js"></script>
 <header>
     <div class="row">
         <div class="col-sm-6">
@@ -40,6 +41,9 @@ if (isloggedin() and !isguestuser()):
             <a class="btn btn-primary" href="./tutor/add.php"><i class="fa fa-plus"></i> Novo Tutor(a)</a>
             <a class="btn btn-default" href="index.php"><i class="fa fa-refresh"></i> Atualizar</a>
         </div>
+    </div>
+    <div class="row">
+        <input class="search_sct form-control" type="text" placeholder="Pesquisar..">
     </div>
 </header>
 <?php if (!empty($_SESSION['message'])) : ?>
@@ -63,7 +67,7 @@ if (isloggedin() and !isguestuser()):
     <tbody>
     <?php if($tutores) :?>
     <?php foreach ($tutores as $tutor) : ?>
-    <tr>
+    <tr class="list_sct">
         <td><?php echo utf8_encode($tutor['nome']); ?></td>
         <td><?php echo utf8_encode($tutor['curso']); ?></td>
         <td><?php echo utf8_encode($tutor['polo']); ?></td>
