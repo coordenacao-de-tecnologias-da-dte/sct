@@ -26,13 +26,20 @@ if($_SESSION['user_sct']) :
 echo $OUTPUT->header();
 include(HEADER_TEMPLATE);
 ?>
+    <style type="text/css">
+        .tblMin tbody{
+            height: 300px;
+            overflow-y: auto;
+            display: block;
+        }
+    </style>
     <script type="text/javascript" src="../js/filter_vincularTutor.js"></script>
-    <div class="container overflow-auto" style="max-height: 40%">
+    <div class="container">
         <div class="row">
-            <div class="col-sm">
+            <div class="col-sm-4">
                 <center><h3>Tutor</h3></center>
                 <input class="form-control" id="sc_tutor" type="text" placeholder="Pesquisar..">
-                <table id="tutorList" class="table table-striped">
+                <table id="tutorList" class="table table-striped tblMin">
                     <tbody>
                     <?php if($tutores) :?>
                     <?php foreach ($tutores as $tutor) : ?>
@@ -43,7 +50,7 @@ include(HEADER_TEMPLATE);
                                 <label class="custom-control-label" for="check<?php echo $tutor['id'];?>"></label>
                             </div>
                         </th>
-                        <td><?php echo $tutor['nome']; ?></td>
+                        <td><?php echo utf8_encode($tutor['nome']); ?></td>
                     </tr>
                         <?php endforeach; ?>
                         <?php else : ?>
@@ -53,45 +60,56 @@ include(HEADER_TEMPLATE);
                         <?php endif; ?>
                     </tbody>
                 </table>
-                <!--<<table border=3 style="margin-left: 20px;">
-                    <tr>
-                        <td width="165px" height="270px">
-
-                    <tr>
-                        <?php /*if($tutores) :*/?>
-                        <?php /*foreach ($tutores as $tutor) : */?>
-                    <tr>
-                        <td><?php /*echo utf8_encode($tutor['nome']); */?></td>
-
-                        <?php /*endforeach; */?>
-                        <?php /*else : */?>
-                    </tr>
-                    <td colspan="6">Nenhum registro encontrado.</td>
-                    </tr>
-                    <?php /*endif; */?>
-
-                        </td>
-                    </tr>
-                </table>-->
-
             </div>
 
-            <div class="col-sm">
+            <div class="col-sm-4">
                 <center><h3>Polo</h3></center>
-                <table border=3 style="margin-left: 20px;">
-                    <tr>
-                        <td width="165px" height="270px">
-                        </td>
-                    </tr>
+                <input class="form-control" id="sc_tutor" type="text" placeholder="Pesquisar..">
+                <table id="tutorList" class="table table-striped tblMin">
+                    <tbody>
+                    <?php if($tutores) :?>
+                        <?php foreach ($tutores as $tutor) : ?>
+                            <tr>
+                                <th scope="row">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="check<?php echo $tutor['id'];?>"  value="<?php echo $tutor['id'];?>" name="tutor[]">
+                                        <label class="custom-control-label" for="check<?php echo $tutor['id'];?>"></label>
+                                    </div>
+                                </th>
+                                <td><?php echo utf8_encode($tutor['nome']); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <tr>
+                            <td colspan="6">Nenhum registro encontrado.</td>
+                        </tr>
+                    <?php endif; ?>
+                    </tbody>
                 </table>
             </div>
-            <div class="col-sm">
+            <div class="col-sm-4">
                 <center><h3>Disciplina</h3></center>
-                <table border=3 style="margin-left: 20px;">
-                    <tr>
-                        <td width="165px" height="270px">
-                        </td>
-                    </tr>
+                <input class="form-control" id="sc_tutor" type="text" placeholder="Pesquisar..">
+                <table id="tutorList" class="table table-striped tblMin">
+                    <tbody>
+                    <?php if($tutores) :?>
+                        <?php foreach ($tutores as $tutor) : ?>
+                            <tr>
+                                <th scope="row">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="check<?php echo $tutor['id'];?>"  value="<?php echo $tutor['id'];?>" name="tutor[]">
+                                        <label class="custom-control-label" for="check<?php echo $tutor['id'];?>"></label>
+                                    </div>
+                                </th>
+                                <td><?php echo utf8_encode($tutor['nome']); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <tr>
+                            <td colspan="6">Nenhum registro encontrado.</td>
+                        </tr>
+                    <?php endif; ?>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -105,7 +123,7 @@ include(HEADER_TEMPLATE);
     <h3>Prévia das vinculações</h3>
         <table border=3>
             <tr>
-                <td width="440px" height="180px">
+                <td width="500px" height="200px">
                 </td>
             </tr>
         </table>
