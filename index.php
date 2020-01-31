@@ -31,6 +31,7 @@ if (isloggedin() and !isguestuser()):
     echo $OUTPUT->header();
     include (HEADER_TEMPLATE);
 ?>
+        <script type="text/javascript" src="js/filter_vincularTutor.js"></script>
 <header>
     <div class="row">
         <div class="col-sm-6">
@@ -41,6 +42,9 @@ if (isloggedin() and !isguestuser()):
             <a class="btn btn-default" href="index.php"><i class="fa fa-refresh"></i> Atualizar</a>
         </div>
     </div>
+    <div class="row">
+        <input class="form-control" id="sc_tutor_index" type="text" placeholder="Pesquisar..">
+    </div>
 </header>
 <?php if (!empty($_SESSION['message'])) : ?>
     <div class="alert alert-<?php echo $_SESSION['type']; ?>
@@ -50,7 +54,7 @@ if (isloggedin() and !isguestuser()):
     </div>
     <?php clear_messages(); ?>
 <?php endif; ?>
-<table class="table table-hover">
+<table id="tutorListIndex" class="table table-hover">
     <thead>
     <tr>
         <th width="30%">Nome</th>

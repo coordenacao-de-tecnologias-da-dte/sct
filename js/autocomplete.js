@@ -1,6 +1,6 @@
 $(document).ready(function(){
     // Captura o retorno do retornaCliente.php
-    $.getJSON('tutor/search.php', function(data){
+    $.getJSON('search.php', function(data){
         var search = [];
 
         // Armazena na array capturando somente o nome do cliente
