@@ -40,7 +40,7 @@ include(HEADER_TEMPLATE);
             <div class="col-sm-4">
                 <center><h3>Tutor</h3></center>
                 <input class="search_sct form-control"  type="text" placeholder="Pesquisar..">
-                <table id="tutorList" class="table table-striped tblMin">
+                <table class="table table-striped tblMin">
                     <tbody>
                     <?php if($tutores) :?>
                     <?php foreach ($tutores as $tutor) : ?>
@@ -66,7 +66,7 @@ include(HEADER_TEMPLATE);
             <div class="col-sm-4">
                 <center><h3>Polo</h3></center>
                 <input class="search_tbl_Polo form-control" type="text" placeholder="Pesquisar..">
-                <table id="tutorList" class="table table-striped tblMin">
+                <table class="table table-striped tblMin">
                     <tbody>
                     <?php if($polos) :?>
                         <?php foreach ($polos as $polo) : ?>
@@ -90,12 +90,12 @@ include(HEADER_TEMPLATE);
             </div>
             <div class="col-sm-4">
                 <center><h3>Disciplina</h3></center>
-                <input class="search_sct form-control"  type="text" placeholder="Pesquisar..">
-                <table id="tutorList" class="table table-striped tblMin">
+                <input class="search_tbl_Disciplina form-control"  type="text" placeholder="Pesquisar..">
+                <table  class="table table-striped tblMin">
                     <tbody>
                     <?php if($tutores) :?>
                         <?php foreach ($tutores as $tutor) : ?>
-                            <tr class="list_sct">
+                            <tr class="list_tbl_Disciplina">
                                 <th scope="row">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="checkDisciplina<?php echo $tutor['id'];?>"  value="<?php echo $tutor['id'];?>" name="tutor[]">
