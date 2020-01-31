@@ -34,17 +34,17 @@ include(HEADER_TEMPLATE);
             display: block;
         }
     </style>
-    <script type="text/javascript" src="../js/filter_vincularTutor.js"></script>
+    <script type="text/javascript" src="../js/filter_list.js"></script>
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
                 <center><h3>Tutor</h3></center>
-                <input class="form-control" id="sc_tutor" type="text" placeholder="Pesquisar..">
+                <input class="search_sct form-control"  type="text" placeholder="Pesquisar..">
                 <table id="tutorList" class="table table-striped tblMin">
                     <tbody>
                     <?php if($tutores) :?>
                     <?php foreach ($tutores as $tutor) : ?>
-                    <tr>
+                    <tr class="list_sct">
                         <th scope="row">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="check<?php echo $tutor['id'];?>"  value="<?php echo $tutor['id'];?>" name="tutor[]">
@@ -65,19 +65,19 @@ include(HEADER_TEMPLATE);
 
             <div class="col-sm-4">
                 <center><h3>Polo</h3></center>
-                <input class="form-control" id="sc_tutor" type="text" placeholder="Pesquisar..">
+                <input class="search_tbl_Polo form-control" type="text" placeholder="Pesquisar..">
                 <table id="tutorList" class="table table-striped tblMin">
                     <tbody>
-                    <?php if($tutores) :?>
-                        <?php foreach ($tutores as $tutor) : ?>
-                            <tr>
+                    <?php if($polos) :?>
+                        <?php foreach ($polos as $polo) : ?>
+                            <tr class="list_tbl_Polo">
                                 <th scope="row">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="checkPolo<?php echo $tutor['id'];?>"  value="<?php echo $tutor['id'];?>" name="tutor[]">
-                                        <label class="custom-control-label" for="checkPolo<?php echo $tutor['id'];?>"></label>
+                                        <input type="checkbox" class="custom-control-input" id="checkPolo<?php echo $polo['id'];?>"  value="<?php echo $polo['id'];?>" name="tutor[]">
+                                        <label class="custom-control-label" for="checkPolo<?php echo $polo['id'];?>"></label>
                                     </div>
                                 </th>
-                                <td><?php echo utf8_encode($tutor['polo']); ?></td>
+                                <td><?php echo utf8_encode($polo['nome']); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else : ?>
@@ -90,12 +90,12 @@ include(HEADER_TEMPLATE);
             </div>
             <div class="col-sm-4">
                 <center><h3>Disciplina</h3></center>
-                <input class="form-control" id="sc_tutor" type="text" placeholder="Pesquisar..">
+                <input class="search_sct form-control"  type="text" placeholder="Pesquisar..">
                 <table id="tutorList" class="table table-striped tblMin">
                     <tbody>
                     <?php if($tutores) :?>
                         <?php foreach ($tutores as $tutor) : ?>
-                            <tr>
+                            <tr class="list_sct">
                                 <th scope="row">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="checkDisciplina<?php echo $tutor['id'];?>"  value="<?php echo $tutor['id'];?>" name="tutor[]">

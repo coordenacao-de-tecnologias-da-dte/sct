@@ -6,5 +6,11 @@ $(document).ready(function(){
              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
          });
     });
+    $(".search_tbl_Polo").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("tr.list_tbl_Polo").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
 
 });
