@@ -29,7 +29,7 @@ if (isloggedin() and !isguestuser()):
     echo $OUTPUT->header();
     include (HEADER_TEMPLATE);
 ?>
-        <script type="text/javascript" src="../js/filter_vincularTutor.js"></script>
+        <script type="text/javascript" src="../js/filter_list.js"></script>
 <header>
     <div class="row">
         <div class="col-sm-6">
@@ -40,7 +40,7 @@ if (isloggedin() and !isguestuser()):
             <a class="btn btn-default" href="index.php"><i class="fa fa-refresh"></i> Atualizar</a>
         </div>
         <div class="row">
-            <input class="form-control" id="sc_polo_index" type="text" placeholder="Pesquisar..">
+            <input class="search_sct form-control" type="text" placeholder="Pesquisar..">
         </div>
     </div>
 </header>
@@ -52,7 +52,7 @@ if (isloggedin() and !isguestuser()):
     </div>
     <?php clear_messages(); ?>
 <?php endif; ?>
-<table id="poloListIndex" class="table table-hover">
+<table class="table table-hover">
     <thead>
     <tr>
         <th width="70%">Nome do Polo</th>
@@ -62,7 +62,7 @@ if (isloggedin() and !isguestuser()):
     <tbody>
     <?php if($polos) :?>
     <?php foreach ($polos as $polo) : ?>
-    <tr>
+    <tr class="list_sct">
         <td><?php echo utf8_encode($polo['nome']); ?></td>
         <td class="actions text-right">
             <a href="view.php?id=<?php echo $polo['id']; ?>" class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>

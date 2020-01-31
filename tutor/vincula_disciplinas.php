@@ -26,7 +26,7 @@ if($_SESSION['user_sct']) :
 echo $OUTPUT->header();
 include(HEADER_TEMPLATE);
 ?>
-    <script type="text/javascript" src="../js/filter_vincularTutor.js"></script>
+    <script type="text/javascript" src="../js/filter_list.js"></script>
     <div class="container overflow-auto" style="max-height: 40%">
         <div class="row">
             <div class="col-sm">
