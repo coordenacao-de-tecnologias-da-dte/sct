@@ -22,9 +22,10 @@ $PAGE->navbar->add($sctstring);
 $PAGE->set_title($sctstring);
 
 if($_SESSION['user_sct']) :
-    index($_SESSION["user_sct"][0]);
+    vincula_tutor_disciplinas($_SESSION["user_sct"][0]);
 echo $OUTPUT->header();
 include(HEADER_TEMPLATE);
+var_dump($_SESSION['user_sct']);
 ?>
     <style type="text/css">
         .tblMin tbody{
@@ -76,7 +77,7 @@ include(HEADER_TEMPLATE);
                                         <label class="custom-control-label" for="check<?php echo $tutor['id'];?>"></label>
                                     </div>
                                 </th>
-                                <td><?php echo utf8_encode($tutor['nome']); ?></td>
+                                <td><?php echo utf8_encode($tutor['polo']); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else : ?>
@@ -101,7 +102,7 @@ include(HEADER_TEMPLATE);
                                         <label class="custom-control-label" for="check<?php echo $tutor['id'];?>"></label>
                                     </div>
                                 </th>
-                                <td><?php echo utf8_encode($tutor['nome']); ?></td>
+                                <td><?php echo utf8_encode($tutor['disciplina']); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else : ?>

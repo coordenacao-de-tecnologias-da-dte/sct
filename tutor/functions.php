@@ -9,9 +9,12 @@
 require_once ('../config.php');
 require_once (DBTUTOR);
 require_once (DBUSER);
+require_once (DBPOLO);
 
 $tutores = null;
 $tutor = null;
+$polos = null;
+$disciplinas = null;
 
 /*
  * LIsta de TUtores
@@ -20,12 +23,23 @@ function index($usuario){
     global $tutores;
 
     $tutores = lista_vinculos($usuario);
+
 }
 
 function vincula_tutor_disciplinas($usuario){
     global $tutores;
+    global $polos;
+    global $disciplinas;
+
+    $user = $usuario;
 
     $tutores = lista_vinculos($usuario);
+    if ( $user['idCategory'] == NULL){
+        $polos = get_all_polos();
+    } else {
+        $polos = get_polos_cursos($usuario);
+    }
+
 }
 
 function add(){

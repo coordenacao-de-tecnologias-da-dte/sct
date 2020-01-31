@@ -33,8 +33,6 @@ if (isloggedin() and !isguestuser()):
         view($_GET['id']);
         ?>
 
-
-
         <h2>Tutor(a) : <?php echo utf8_encode($tutor['nome']); ?></h2>
         <hr>
         <?php if (!empty($_SESSION['message'])) :
